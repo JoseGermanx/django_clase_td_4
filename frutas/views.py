@@ -11,3 +11,13 @@ def vista_error(request):
         resultado = 1 / 0
     except ZeroDivisionError as err:
         return render(request, 'frutas/error.html', {'mensaje': err})
+
+def listar_productos(request):
+    productos = ['Mouse','Teclado','Monitor']
+    return render(request, 'frutas/productos.html', { 'productos': productos })
+
+def error_404_handler(request, exception):
+    return render(request, '404_error_handler.html', status=404)
+
+def error_500_handler(request):
+    return render(request, '500_error_handler.html', status=500)

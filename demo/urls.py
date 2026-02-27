@@ -16,8 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from django.conf.urls import handler404, handler500
+from frutas.views import error_404_handler, error_500_handler
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('frutas.urls') )
 ]
+
+handler404 = error_404_handler
+
+handler500 = error_500_handler
